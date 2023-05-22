@@ -1,0 +1,7 @@
+{
+  "name": "Ping",
+  "homeassistant": "0.115.0",
+  "country": "CN",
+  "domains": ["device_tracker", "binary_sensor"],
+  "render_readme": true
+}

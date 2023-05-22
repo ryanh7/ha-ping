@@ -1,0 +1,28 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "data": {
+                    "name": "Name",
+                    "host": "Host",
+                    "scan_interval": "Scan Interval(Seconds)",
+                    "platform": "Platform"
+                },
+                "title": "Ping"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "name": "Name",
+                    "host": "Host",
+                    "scan_interval": "Scan Interval(Seconds)",
+                    "platform": "Platform"
+                },
+                "title": "Ping"
+            }
+        }
+    }
+}

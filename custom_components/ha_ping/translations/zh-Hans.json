@@ -1,0 +1,28 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "data": {
+                    "name": "名称",
+                    "host": "主机",
+                    "scan_interval": "扫描间隔(秒)",
+                    "platform": "支持平台"
+                },
+                "title": "Ping"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "name": "名称",
+                    "host": "主机",
+                    "scan_interval": "扫描间隔(秒)",
+                    "platform": "支持平台"
+                },
+                "title": "Ping"
+            }
+        }
+    }
+}

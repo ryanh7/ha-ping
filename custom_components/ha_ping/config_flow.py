@@ -4,6 +4,7 @@ import logging
 import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.core import callback
+from homeassistant.helpers import selector
 import homeassistant.helpers.config_validation as cv
 from homeassistant.const import (
     CONF_NAME,
@@ -36,10 +37,6 @@ class PingFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         errors = {}
 
         if user_input is not None:
-            # await self.async_set_unique_id(
-            #     f"ping-entry-{user_input[CONF_HOST]}"
-            # )
-            # self._abort_if_unique_id_configured()
             return self.async_create_entry(title=user_input[CONF_NAME], data=user_input)
 
         return self.async_show_form(
@@ -48,7 +45,14 @@ class PingFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                     {
                         vol.Required(CONF_NAME, default="Ping"): cv.string,
                         vol.Required(CONF_HOST): cv.string,
-                        vol.Required(CONF_SCAN_INTERVAL, default=5): vol.Coerce(int),
+                        vol.Required(CONF_SCAN_INTERVAL, default=5): selector.NumberSelector(
+                            selector.NumberSelectorConfig(
+                                min=1,
+                                max=7200,
+                                step=1,
+                                mode=selector.NumberSelectorMode.BOX,
+                            ),
+                        ),
                         vol.Required(CONF_PLATFORM, default=list(SUPPORTED_PLATFORMS.keys())): cv.multi_select(SUPPORTED_PLATFORMS),
                     }
             ),
@@ -87,7 +91,14 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                     {
                         vol.Required(CONF_NAME, default=self.config.get(CONF_NAME)): cv.string,
                         vol.Required(CONF_HOST, default=self.config.get(CONF_HOST)): cv.string,
-                        vol.Required(CONF_SCAN_INTERVAL, default=self.config.get(CONF_SCAN_INTERVAL)): vol.Coerce(int),
+                        vol.Required(CONF_SCAN_INTERVAL, default=self.config.get(CONF_SCAN_INTERVAL)): selector.NumberSelector(
+                            selector.NumberSelectorConfig(
+                                min=1,
+                                max=7200,
+                                step=1,
+                                mode=selector.NumberSelectorMode.BOX,
+                            ),
+                        ),
                         vol.Required(CONF_PLATFORM, default=self.config.get(CONF_PLATFORM)): cv.multi_select(SUPPORTED_PLATFORMS),
                     }
             ),

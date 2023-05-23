@@ -9,12 +9,10 @@ from homeassistant.components.binary_sensor import (
     BinarySensorDeviceClass,
     BinarySensorEntity,
 )
-from homeassistant.const import CONF_HOST, CONF_NAME, CONF_PLATFORM
+from homeassistant.const import CONF_NAME, CONF_PLATFORM
 from homeassistant.core import HomeAssistant
-import homeassistant.helpers.config_validation as cv
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.restore_state import RestoreEntity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import (
@@ -41,11 +39,10 @@ async def async_setup_entry(
         return
 
     name = config[CONF_NAME]
-    host = config[CONF_HOST]
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    unique_id = f"{entry.unique_id}-binary_sensor"
+    unique_id = f"{entry.entry_id}-binary_sensor"
 
-    async_add_entities([PingBinarySensor(coordinator,unique_id, name)])
+    async_add_entities([PingBinarySensor(coordinator, unique_id, name)])
 
 
 class PingBinarySensor(CoordinatorEntity, BinarySensorEntity):
@@ -61,7 +58,7 @@ class PingBinarySensor(CoordinatorEntity, BinarySensorEntity):
     def name(self) -> str:
         """Return the name of the device."""
         return self._name
-    
+
     @property
     def unique_id(self):
         return self._unique_id
@@ -92,4 +89,3 @@ class PingBinarySensor(CoordinatorEntity, BinarySensorEntity):
             ATTR_ROUND_TRIP_TIME_MDEV: self.coordinator.data[ATTR_ROUND_TRIP_TIME_MDEV],
             ATTR_ROUND_TRIP_TIME_MIN: self.coordinator.data[ATTR_ROUND_TRIP_TIME_MDEV],
         }
-

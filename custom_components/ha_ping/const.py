@@ -4,8 +4,6 @@ PING_TIMEOUT = 3
 # icmplib timeout
 ICMP_TIMEOUT = 1
 
-PING_ATTEMPTS_COUNT = 3
-
 DOMAIN = "ha_ping"
 
 PING_PRIVS = "ping_privs"

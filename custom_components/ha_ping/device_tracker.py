@@ -39,7 +39,7 @@ async def async_setup_entry(
     name = config[CONF_NAME]
     host = config[CONF_HOST]
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    unique_id = f"{entry.unique_id}-device_tracker"
+    unique_id = f"{entry.entry_id}-device_tracker"
 
     async_add_entities([PingTracker(coordinator, unique_id, name, host)])
 

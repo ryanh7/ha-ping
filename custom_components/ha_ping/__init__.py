@@ -12,9 +12,8 @@ from icmplib import SocketPermissionError, NameLookupError, async_ping, ping as 
 
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.helpers.reload import async_setup_reload_service
 from homeassistant.helpers.typing import ConfigType
-from homeassistant.helpers.update_coordinator import CoordinatorEntity, DataUpdateCoordinator
+from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from homeassistant.const import Platform, CONF_HOST, CONF_SCAN_INTERVAL
 
 from .const import (
@@ -47,6 +46,7 @@ class PingData(DataUpdateCoordinator):
 
     def __init__(self, hass, host, interval):
         """Initialize the data object."""
+        interval = int(interval)
         super().__init__(
             hass, _LOGGER, name=DOMAIN, update_interval=timedelta(
                 seconds=interval)

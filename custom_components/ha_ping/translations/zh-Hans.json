@@ -40,7 +40,7 @@
                         "name": "最大往返时间"
                     },
                     "round_trip_time_min": {
-                        "name": "最小平均往返时间"
+                        "name": "最小往返时间"
                     }
                 }
             }

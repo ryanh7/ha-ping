@@ -24,5 +24,15 @@
                 "title": "Ping"
             }
         }
+    },
+    "entity": {
+        "binary_sensor": {
+            "ping": {
+                "state": {
+                    "on": "在线",
+                    "off": "离线"
+                }
+            }
+        }
     }
 }

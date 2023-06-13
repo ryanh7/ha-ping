@@ -48,6 +48,8 @@ async def async_setup_entry(
 class PingBinarySensor(CoordinatorEntity, BinarySensorEntity):
     """Representation of a Ping Binary sensor."""
 
+    _attr_translation_key = "ping"
+
     def __init__(self, coordinator, unique_id, name) -> None:
         """Initialize the Ping Binary sensor."""
         super().__init__(coordinator)

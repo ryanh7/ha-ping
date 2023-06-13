@@ -21,7 +21,6 @@ from .const import (
     IS_ALIVE,
     ATTR_ROUND_TRIP_TIME_AVG,
     ATTR_ROUND_TRIP_TIME_MAX,
-    ATTR_ROUND_TRIP_TIME_MDEV,
     ATTR_ROUND_TRIP_TIME_MIN
 )
 
@@ -88,6 +87,5 @@ class PingBinarySensor(CoordinatorEntity, BinarySensorEntity):
         return {
             ATTR_ROUND_TRIP_TIME_AVG: self.coordinator.data[ATTR_ROUND_TRIP_TIME_AVG],
             ATTR_ROUND_TRIP_TIME_MAX: self.coordinator.data[ATTR_ROUND_TRIP_TIME_MAX],
-            ATTR_ROUND_TRIP_TIME_MDEV: self.coordinator.data[ATTR_ROUND_TRIP_TIME_MDEV],
-            ATTR_ROUND_TRIP_TIME_MIN: self.coordinator.data[ATTR_ROUND_TRIP_TIME_MDEV],
+            ATTR_ROUND_TRIP_TIME_MIN: self.coordinator.data[ATTR_ROUND_TRIP_TIME_MIN],
         }

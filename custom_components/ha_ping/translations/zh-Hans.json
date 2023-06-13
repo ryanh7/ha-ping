@@ -31,6 +31,32 @@
                 "state": {
                     "on": "在线",
                     "off": "离线"
+                },
+                "state_attributes": {
+                    "round_trip_time_avg": {
+                        "name": "平均往返时间"
+                    },
+                    "round_trip_time_max": {
+                        "name": "最大往返时间"
+                    },
+                    "round_trip_time_min": {
+                        "name": "最小平均往返时间"
+                    }
+                }
+            }
+        },
+        "device_tracker": {
+            "ping": {
+                "state_attributes": {
+                    "round_trip_time_avg": {
+                        "name": "平均往返时间"
+                    },
+                    "round_trip_time_max": {
+                        "name": "最大往返时间"
+                    },
+                    "round_trip_time_min": {
+                        "name": "最小往返时间"
+                    }
                 }
             }
         }

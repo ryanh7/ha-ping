@@ -24,7 +24,6 @@ from .const import (
     IS_ALIVE,
     ATTR_ROUND_TRIP_TIME_AVG,
     ATTR_ROUND_TRIP_TIME_MAX,
-    ATTR_ROUND_TRIP_TIME_MDEV,
     ATTR_ROUND_TRIP_TIME_MIN
 )
 
@@ -85,7 +84,6 @@ class PingDataICMPLib(PingData):
             ATTR_ROUND_TRIP_TIME_MIN: data.min_rtt,
             ATTR_ROUND_TRIP_TIME_MAX: data.max_rtt,
             ATTR_ROUND_TRIP_TIME_AVG: data.avg_rtt,
-            ATTR_ROUND_TRIP_TIME_MDEV: "",
             IS_ALIVE: data.is_alive
         }
 
@@ -154,7 +152,6 @@ class PingDataSubProcess(PingData):
                     ATTR_ROUND_TRIP_TIME_MIN: rtt_min,
                     ATTR_ROUND_TRIP_TIME_AVG: rtt_avg,
                     ATTR_ROUND_TRIP_TIME_MAX: rtt_max,
-                    ATTR_ROUND_TRIP_TIME_MDEV: ""
                 }
             match = PING_MATCHER.search(
                 str(out_data).rsplit("\n", maxsplit=1)[-1])
@@ -164,7 +161,6 @@ class PingDataSubProcess(PingData):
                 ATTR_ROUND_TRIP_TIME_MIN: rtt_min,
                 ATTR_ROUND_TRIP_TIME_AVG: rtt_avg,
                 ATTR_ROUND_TRIP_TIME_MAX: rtt_max,
-                ATTR_ROUND_TRIP_TIME_MDEV: rtt_mdev
             }
         except asyncio.TimeoutError:
             _LOGGER.exception(

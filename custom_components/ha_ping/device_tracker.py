@@ -19,7 +19,6 @@ from .const import (
     IS_ALIVE,
     ATTR_ROUND_TRIP_TIME_AVG,
     ATTR_ROUND_TRIP_TIME_MAX,
-    ATTR_ROUND_TRIP_TIME_MDEV,
     ATTR_ROUND_TRIP_TIME_MIN
 )
 
@@ -46,6 +45,8 @@ async def async_setup_entry(
 
 class PingTracker(CoordinatorEntity, ScannerEntity):
     """Representation of network device."""
+
+    _attr_translation_key = "ping"
 
     def __init__(self, coordinator, unique_id, name, host) -> None:
         """Initialize the tracked device."""
@@ -92,6 +93,5 @@ class PingTracker(CoordinatorEntity, ScannerEntity):
         return {
             ATTR_ROUND_TRIP_TIME_AVG: self.coordinator.data[ATTR_ROUND_TRIP_TIME_AVG],
             ATTR_ROUND_TRIP_TIME_MAX: self.coordinator.data[ATTR_ROUND_TRIP_TIME_MAX],
-            ATTR_ROUND_TRIP_TIME_MDEV: self.coordinator.data[ATTR_ROUND_TRIP_TIME_MDEV],
-            ATTR_ROUND_TRIP_TIME_MIN: self.coordinator.data[ATTR_ROUND_TRIP_TIME_MDEV],
+            ATTR_ROUND_TRIP_TIME_MIN: self.coordinator.data[ATTR_ROUND_TRIP_TIME_MIN],
         }

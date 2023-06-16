@@ -29,8 +29,8 @@
         "binary_sensor": {
             "ping": {
                 "state": {
-                    "on": "在线",
-                    "off": "离线"
+                    "on": "已连接",
+                    "off": "已断开"
                 },
                 "state_attributes": {
                     "round_trip_time_avg": {

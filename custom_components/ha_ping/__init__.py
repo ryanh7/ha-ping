@@ -199,7 +199,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         coordinator = PingDataICMPLib
     data = coordinator(hass, host, interval, privileged)
     
-    await data.async_refresh()
+    try:
+        await asyncio.wait_for(data.async_refresh(), timeout=12)
+    except asyncio.TimeoutError:
+        pass
 
     hass.data.setdefault(DOMAIN, {})
     hass.data[DOMAIN][entry.entry_id] = data
